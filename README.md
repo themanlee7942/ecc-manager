@@ -1,38 +1,24 @@
 # ECC Manager
 
-A local web UI to manage per-project [Claude Code](https://claude.ai/code) configurations.
-Installs components from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
-into project-scoped `.claude/` directories — **never touches `~/.claude/`**.
+A local web UI to manage [Claude Code](https://claude.ai/code) configurations per project.
+Pulls components from [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
+and installs them into each project's `.claude/` directory — **never touches `~/.claude/`**.
 
 ---
 
-## Why
+## What is everything-claude-code?
 
-Claude Code loads configuration in priority order:
+[everything-claude-code](https://github.com/affaan-m/everything-claude-code) (ECC) is a curated
+library of **agents, skills, commands, rules, hooks, and MCP server configs** that extend how
+Claude Code works on your projects. Think of it as a plugin ecosystem for Claude — each component
+teaches Claude a new capability, enforces a coding standard, or connects it to an external tool.
 
-```
-.claude/settings.json    ← project level  ← what this tool manages
-~/.claude/settings.json  ← user global
-```
+ECC's own installer gives you everything at once. That's great if you know what you want — but
+most people don't need every agent and every rule on every project.
 
-Project-level config **overrides** global. ECC Manager lets you curate exactly which
-agents, skills, rules, hooks, and MCP servers each project gets — without cross-project
-contamination and without editing files by hand.
-
----
-
-## Features
-
-- Browse and install 200+ ECC components: agents, skills, commands, rules, hooks, MCP servers
-- Per-project `.claude/` directories, fully isolated
-- Hooks install directly into `settings.json` (individual hook selection — not all-or-nothing)
-- MCP servers read dynamically from ECC's `mcp-configs/mcp-servers.json`
-- Settings UI writes `model`, `MAX_THINKING_TOKENS`, `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE`, `CLAUDE_CODE_SUBAGENT_MODEL`
-- Deploy button copies `.claude/` to your actual project directory
-- Activity log panel with copy-to-clipboard
-- Installed components panel (right sidebar) with jump-to navigation
-- Version-aware: each ECC pull is stored separately, projects pin to a version
-- Zero npm dependencies — Node.js built-ins only
+**ECC Manager is the visual alternative.** Browse the full library, read what each component does
+before installing it, pick only what this project needs, and get a ready-to-use `.claude/`
+directory — no commands, no config files to edit by hand.
 
 ---
 
@@ -41,7 +27,7 @@ contamination and without editing files by hand.
 **Requirements:** Node.js 18+, Git
 
 ```bash
-git clone https://github.com/your-username/ecc-manager
+git clone https://github.com/themanlee7942/ecc-manager
 cd ecc-manager
 node server.js
 ```
@@ -50,65 +36,100 @@ Open **http://localhost:7700**
 
 ---
 
-## Usage
+## Workflow
 
 ### 1. Pull ECC
 
-Click **↓ Pull ECC** in the header. This clones the [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
-repo and stores it as a versioned snapshot. Click again anytime to pull the latest.
+Click **↓ Pull ECC** in the header. This clones the ECC repo as a versioned local snapshot.
+All components are read directly from it — no hardcoded lists.
 
 ### 2. Create a Project
 
-Click your project name in the header → **+ New Project**. Enter a name and optional deploy path.
+Click the project selector → **+ New Project**. Give it the same name as your actual project.
 
-### 3. Install Components
+### 3. Browse and Preview Components
 
-Select a project, browse by category in the left sidebar, check components, click **↓ Install**.
-Each component shows its source filename (`agent-sort.md`, `tdd-workflow/`, etc.) so you know exactly what gets copied.
+Browse by category in the left sidebar. **Click any component name** to preview its content
+before installing — single files open inline, directories show a file tree you can navigate.
 
-### 4. Configure Settings
+### 4. Install
 
-Under **⚙ Settings**, set:
-- **Default Model** — `sonnet` recommended for most work
-- **MAX_THINKING_TOKENS** — `10000` recommended (~70% cost reduction)
-- **CLAUDE_AUTOCOMPACT_PCT_OVERRIDE** — `50` recommended
-- **CLAUDE_CODE_SUBAGENT_MODEL** — `haiku` recommended for delegated tasks
+Check the components you want and click **↓ Install**, or use the **Install** button on each row.
 
-Click **Apply** to write directly to `projects/[name]/.claude/settings.json`.
+- **Agents** — installed as `.claude/agents/*.md`
+- **Skills** — installed as individual files in `.claude/skills/*/`
+- **Rules** — individual guideline files copied to `.claude/rules/*/`
+- **Hooks** — each hook entry merged individually into `.claude/settings.json`
+- **MCP Servers** — server config written directly into `.claude/settings.json` (add your API keys after)
+- **Commands** — installed as `.claude/commands/*.md` slash command definitions
 
-### 5. Deploy
+> **Note:** `multi-*` commands (`/multi-plan`, `/multi-execute`, etc.) require the
+> separate [ccg-workflow](https://www.npmjs.com/package/ccg-workflow) runtime — run `npx ccg-workflow`
+> once in your project after installing them.
 
-Set the deploy path (e.g. `/Users/you/projects/my-app`) and click **Deploy**.
-This copies `projects/[name]/.claude/` into your actual project. The path is saved automatically.
+### 5. Configure Settings
 
-Or use a symlink for always-in-sync behavior:
+Under **⚙ Settings**, configure Claude's behavior for this project:
+
+| Setting | Recommended | Effect |
+|---------|-------------|--------|
+| Default Model | `sonnet` | Cost-efficient for most tasks |
+| MAX_THINKING_TOKENS | `10000` | ~70% cost reduction on extended thinking |
+| CLAUDE_AUTOCOMPACT_PCT_OVERRIDE | `50` | Compacts earlier, keeps quality in long sessions |
+| CLAUDE_CODE_SUBAGENT_MODEL | `haiku` | Cheaper model for delegated subagent work |
+
+Click **Apply** on each setting to write it to `.claude/settings.json`.
+
+### 6. Deploy to Your Project
+
+Enter the path to your actual project directory and click **Deploy**.
+This copies the managed `.claude/` folder into your project.
 
 ```bash
-ln -s ~/ecc-manager/projects/my-project/.claude /path/to/actual/project/.claude
+# Or use a symlink so changes sync automatically:
+ln -s ~/ecc-manager/projects/my-project/.claude /path/to/my-project/.claude
 ```
+
+---
+
+## LM Studio Assist *(optional)*
+
+If you have [LM Studio](https://lmstudio.ai) installed, you can use a local LLM to automatically
+recommend which components to install based on your project description.
+
+**How it works:**
+1. Start LM Studio and enable the local server (default: `http://localhost:1234`)
+2. In ECC Manager, open **LM Studio Assist** from the sidebar
+3. Point it at your LM Studio server URL and describe your project
+4. Click **Analyze** — the LM reviews every component in the library and scores its relevance
+5. Components scoring above your threshold (default: 95%) are pre-selected for install
+6. Review the results, adjust the selection, and click **Install Selected**
+
+You can tune the threshold ("Install if more than X% matches my project") to be more or less
+selective. No data leaves your machine — everything runs through the local server.
+
+This feature is entirely optional. The manual browse-and-install workflow works without it.
 
 ---
 
 ## Component Categories
 
-| Category | Source | What it does |
-|----------|--------|--------------|
-| ⚙ Settings | UI only | Writes `settings.json` fields |
-| 📏 Rules | `rules/*/` | Always-follow coding guidelines |
-| 🪝 Hooks | `hooks/hooks.json` | Per-event automation (PreToolUse, Stop, etc.) |
-| 🔌 MCP Servers | `mcp-configs/mcp-servers.json` | External integrations |
-| 🤖 Agents | `agents/*.md` | Specialized subagents for delegation |
-| ⚡ Skills | `skills/*/` | Workflow and pattern libraries |
-| / Commands | `commands/*.md` | Slash command definitions |
-
-All categories except Settings are scanned dynamically from the pulled ECC version —
-new components appear automatically without any changes to this tool.
+| Category | What gets installed |
+|----------|---------------------|
+| ⚙ Settings | Model, token limits, subagent model → `settings.json` |
+| 📏 Rules | Coding guidelines for your language → `.claude/rules/` |
+| 🪝 Hooks | Automation triggered by Claude events → merged into `settings.json` |
+| 🔌 MCP Servers | External tool integrations → `settings.json` (add API keys manually) |
+| 🤖 Agents | Specialized subagents Claude can delegate to → `.claude/agents/` |
+| ⚡ Skills | Workflow patterns and instructions → `.claude/skills/` |
+| / Commands | Slash command definitions → `.claude/commands/` |
 
 ---
 
-## MCP Setup
+## MCP Servers
 
-After marking an MCP server as installed, add it to `.claude/settings.json`:
+MCP server configs are written to `settings.json` automatically on install.
+Servers that need credentials will show a **needs KEY_NAME** badge — add those values manually:
 
 ```json
 {
@@ -116,60 +137,7 @@ After marking an MCP server as installed, add it to `.claude/settings.json`:
     "github": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here" }
-    }
-  }
-}
-```
-
-See [ECC mcp-configs](https://github.com/affaan-m/everything-claude-code/blob/main/mcp-configs/mcp-servers.json) for all server configurations.
-
----
-
-## Directory Structure
-
-```
-ecc-manager/
-├── server.js              ← HTTP server (Node.js built-ins only, zero deps)
-├── index.html             ← UI (single file, no framework)
-├── state.json             ← auto-created: all project states
-└── projects/
-    ├── .ecc-versions/
-    │   └── 1.10.0/        ← versioned ECC snapshot (git clone)
-    ├── my-backend/
-    │   └── .claude/
-    │       ├── agents/
-    │       ├── skills/
-    │       ├── commands/
-    │       ├── rules/
-    │       └── settings.json
-    └── client-app/
-        └── .claude/
-            └── settings.json
-```
-
----
-
-## state.json
-
-Auto-created on first run. Tracks all project configurations and installed components.
-Back it up or commit it to reproduce your setup on another machine.
-
-```json
-{
-  "cacheUpdatedAt": "2026-04-06T00:00:00Z",
-  "cacheAvailable": true,
-  "activeVersion": "1.10.0",
-  "projects": {
-    "my-backend": {
-      "name": "my-backend",
-      "deployPath": "/Users/you/projects/my-backend",
-      "eccVersion": "1.10.0",
-      "components": {
-        "rule-common":        { "installed": true,  "installedAt": "2026-04-06T00:00:00Z" },
-        "setting-model":      { "installed": true,  "value": "sonnet" },
-        "skill-tdd-workflow": { "installed": false }
-      }
+      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_your_token" }
     }
   }
 }
@@ -179,52 +147,32 @@ Back it up or commit it to reproduce your setup on another machine.
 
 ## Multi-Machine Sync
 
-Copy or sync `state.json` to a new machine, then:
+`state.json` tracks all your projects and what's installed. Copy it to another machine and run:
 
 ```bash
 node server.js
-# open http://localhost:7700
-# click ↓ Pull ECC to re-clone
-# existing project state loads automatically
+# Pull ECC once to re-clone the component library
+# Your project state loads automatically
 ```
 
-Or symlink `state.json` to iCloud / Dropbox for automatic sync.
-
----
-
-## API
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/catalog?version=<id>` | Component list for a version |
-| GET | `/api/versions` | All pulled versions |
-| GET | `/api/projects` | All projects |
-| POST | `/api/projects` | Create project |
-| PATCH | `/api/projects/:name` | Update deploy path / description |
-| DELETE | `/api/projects/:name` | Delete project + files |
-| GET | `/api/projects/:name` | Project detail + component states |
-| POST | `/api/install` | `{ project, ids[] }` |
-| POST | `/api/remove` | `{ project, ids[] }` |
-| POST | `/api/deploy` | `{ project }` |
-| POST | `/api/settings` | `{ project, id, value }` |
-| POST | `/api/update-cache` | Pull latest ECC |
+Or symlink `state.json` to iCloud / Dropbox to keep machines in sync.
 
 ---
 
 ## Troubleshooting
 
-**Port 7700 in use** — Another process is on that port. Kill it or change `PORT` in `server.js`.
+**Port 7700 in use** — Kill the other process or change `PORT` at the top of `server.js`.
 
-**Pull fails** — Check internet connection. Git must be installed (`git --version`).
+**Pull fails** — Git must be installed (`git --version`) and you need internet access.
 
-**Component not found after pull** — The ECC version may not include that component yet. Pull again to get the latest.
+**Nothing shows in the sidebar** — Pull ECC first. Only Settings are available before the first pull.
 
-**Deploy fails** — The deploy path parent directory must exist. The tool copies into `<deployPath>/.claude/` — it won't create the parent.
+**Install fails with "not found in catalog"** — Re-select your project after pulling ECC so the catalog refreshes.
 
-**settings.json looks wrong** — The tool merges into `settings.json`, never replaces it. Inspect `projects/[name]/.claude/settings.json` directly.
+**Deploy fails** — The destination directory must already exist. The tool won't create parent directories.
 
 ---
 
 ## Credits
 
-Components provided by [everything-claude-code](https://github.com/affaan-m/everything-claude-code).
+Components provided by [everything-claude-code](https://github.com/affaan-m/everything-claude-code) by [@affaan-m](https://github.com/affaan-m).
