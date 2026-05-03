@@ -1,4 +1,6 @@
 .claude/
+state/
 projects/
+.fixtures/
 state.json
 .DS_Store

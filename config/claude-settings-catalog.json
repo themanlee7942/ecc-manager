@@ -1,0 +1,1635 @@
+{
+  "sourceUrl": "https://code.claude.com/docs/en/settings",
+  "lastSyncedAt": "2026-05-02",
+  "catalogVersion": 1,
+  "recommendedSettingIds": [
+    "setting-model",
+    "setting-thinking-tokens",
+    "setting-autocompact",
+    "setting-subagent-model"
+  ],
+  "settings": [
+    {
+      "id": "setting-model",
+      "type": "setting",
+      "section": "recommended",
+      "key": "model",
+      "label": "Default Model",
+      "name": "Default Model",
+      "description": "sonnet = cost-efficient (80%+ tasks), opus = deep reasoning, haiku = fastest",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "model",
+      "settingKey": "model",
+      "inputType": "select",
+      "options": [
+        "sonnet",
+        "opus",
+        "haiku"
+      ],
+      "example": "sonnet",
+      "defaultValue": "sonnet",
+      "priority": 1,
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-thinking-tokens",
+      "type": "setting",
+      "section": "recommended",
+      "key": "env",
+      "label": "MAX_THINKING_TOKENS",
+      "name": "MAX_THINKING_TOKENS",
+      "description": "Hidden thinking token cap. Recommended: 10000 (~70% cost reduction vs default 31999).",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "env.MAX_THINKING_TOKENS",
+      "settingKey": "env.MAX_THINKING_TOKENS",
+      "inputType": "number",
+      "example": "10000",
+      "defaultValue": "10000",
+      "priority": 1,
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-autocompact",
+      "type": "setting",
+      "section": "recommended",
+      "key": "env",
+      "label": "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+      "name": "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+      "description": "Context % before auto-compaction. Recommended: 50 (earlier = better quality in long sessions).",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+      "settingKey": "env.CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+      "inputType": "number",
+      "example": "50",
+      "defaultValue": "50",
+      "priority": 1,
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-subagent-model",
+      "type": "setting",
+      "section": "recommended",
+      "key": "env",
+      "label": "CLAUDE_CODE_SUBAGENT_MODEL",
+      "name": "CLAUDE_CODE_SUBAGENT_MODEL",
+      "description": "Model for subagent tasks. Haiku = significant cost reduction for delegated work.",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "env.CLAUDE_CODE_SUBAGENT_MODEL",
+      "settingKey": "env.CLAUDE_CODE_SUBAGENT_MODEL",
+      "inputType": "select",
+      "options": [
+        "haiku",
+        "sonnet",
+        "opus"
+      ],
+      "example": "haiku",
+      "defaultValue": "haiku",
+      "priority": 1,
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-output-style",
+      "type": "setting",
+      "section": "all",
+      "key": "outputStyle",
+      "label": "Output Style",
+      "description": "Configure an output style to adjust the system prompt.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "outputStyle",
+      "inputType": "text",
+      "example": "Explanatory",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-include-git-instructions",
+      "type": "setting",
+      "section": "all",
+      "key": "includeGitInstructions",
+      "label": "Include Git Instructions",
+      "description": "Include git context in Claude's system prompt for better commit message and PR generation.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "includeGitInstructions",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-respect-gitignore",
+      "type": "setting",
+      "section": "all",
+      "key": "respectGitignore",
+      "label": "Respect Gitignore",
+      "description": "Whether Claude Code respects .gitignore rules when reading files.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "respectGitignore",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-include-co-authored-by",
+      "type": "setting",
+      "section": "all",
+      "key": "includeCoAuthoredBy",
+      "label": "Include Co-Authored-By",
+      "description": "Add Co-Authored-By attribution to commits made with Claude Code.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "includeCoAuthoredBy",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-language",
+      "type": "setting",
+      "section": "all",
+      "key": "language",
+      "label": "Language",
+      "description": "Override Claude's response language (e.g. \"zh-CN\", \"ja\", \"es\").",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "language",
+      "inputType": "text",
+      "example": "en",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-permissions",
+      "type": "setting",
+      "section": "all",
+      "key": "permissions",
+      "label": "Permissions",
+      "description": "Tool permission rules object with allow, ask, and deny arrays.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "permissions",
+      "inputType": "json-object",
+      "example": "{\"allow\":[],\"deny\":[]}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-permissions-allow",
+      "type": "setting",
+      "section": "all",
+      "key": "permissions",
+      "label": "Permissions: Allow",
+      "description": "List of tool patterns always allowed without asking (e.g. \"Bash(git log:*)\").",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "permissions.allow",
+      "inputType": "json-array",
+      "example": "[\"Bash(git log:*)\",\"Read\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-permissions-ask",
+      "type": "setting",
+      "section": "all",
+      "key": "permissions",
+      "label": "Permissions: Ask",
+      "description": "List of tool patterns that always require user approval.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "permissions.ask",
+      "inputType": "json-array",
+      "example": "[\"Bash(*)\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-permissions-deny",
+      "type": "setting",
+      "section": "all",
+      "key": "permissions",
+      "label": "Permissions: Deny",
+      "description": "List of tool patterns always blocked.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "permissions.deny",
+      "inputType": "json-array",
+      "example": "[\"Bash(rm -rf:*)\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-hooks",
+      "type": "setting",
+      "section": "all",
+      "key": "hooks",
+      "label": "Hooks",
+      "description": "Shell command hooks for PreToolUse, PostToolUse, and Stop events.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "hooks",
+      "inputType": "json-object",
+      "example": "{\"PostToolUse\":[{\"matcher\":\"Write\",\"command\":\"prettier --write \\\"$FILE_PATH\\\"\"}]}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-env",
+      "type": "setting",
+      "section": "all",
+      "key": "env",
+      "label": "Environment Variables",
+      "description": "Key-value pairs injected as environment variables for each Claude Code session.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "env",
+      "inputType": "json-object",
+      "example": "{\"MY_VAR\":\"value\"}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-always-thinking-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "alwaysThinkingEnabled",
+      "label": "Always Thinking Enabled",
+      "description": "Always use extended thinking for all requests.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "alwaysThinkingEnabled",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-pr-url-template",
+      "type": "setting",
+      "section": "all",
+      "key": "prUrlTemplate",
+      "label": "PR URL Template",
+      "description": "Custom URL template for pull requests (e.g. for GitHub Enterprise).",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "prUrlTemplate",
+      "inputType": "text",
+      "example": "https://github.com/{owner}/{repo}/pull/{number}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-available-models",
+      "type": "setting",
+      "section": "all",
+      "key": "availableModels",
+      "label": "Available Models",
+      "description": "Override the list of models available in the model picker.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "availableModels",
+      "inputType": "json-array",
+      "example": "[\"claude-sonnet-4-6\",\"claude-opus-4-7\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-model-overrides",
+      "type": "setting",
+      "section": "all",
+      "key": "modelOverrides",
+      "label": "Model Overrides",
+      "description": "Per-use-case model overrides (e.g. override model used for title generation).",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "modelOverrides",
+      "inputType": "json-object",
+      "example": "{}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-disable-all-hooks",
+      "type": "setting",
+      "section": "all",
+      "key": "disableAllHooks",
+      "label": "Disable All Hooks",
+      "description": "Disable all hooks globally for this project.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "disableAllHooks",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-disable-skill-shell-execution",
+      "type": "setting",
+      "section": "all",
+      "key": "disableSkillShellExecution",
+      "label": "Disable Skill Shell Execution",
+      "description": "Prevent skills from executing shell commands.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "disableSkillShellExecution",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-enable-all-project-mcp-servers",
+      "type": "setting",
+      "section": "all",
+      "key": "enableAllProjectMcpServers",
+      "label": "Enable All Project MCP Servers",
+      "description": "Auto-enable all MCP servers defined in .mcp.json without per-server approval.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "enableAllProjectMcpServers",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-enabled-mcpjson-servers",
+      "type": "setting",
+      "section": "all",
+      "key": "enabledMcpjsonServers",
+      "label": "Enabled .mcp.json Servers",
+      "description": "List of server names from .mcp.json to enable without per-server approval.",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "enabledMcpjsonServers",
+      "inputType": "json-array",
+      "example": "[\"my-server\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-disabled-mcpjson-servers",
+      "type": "setting",
+      "section": "all",
+      "key": "disabledMcpjsonServers",
+      "label": "Disabled .mcp.json Servers",
+      "description": "List of server names from .mcp.json to explicitly disable.",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "disabledMcpjsonServers",
+      "inputType": "json-array",
+      "example": "[\"noisy-server\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-http-hook-allowed-env-vars",
+      "type": "setting",
+      "section": "all",
+      "key": "httpHookAllowedEnvVars",
+      "label": "HTTP Hook Allowed Env Vars",
+      "description": "Environment variable names that HTTP hooks are allowed to read.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "httpHookAllowedEnvVars",
+      "inputType": "json-array",
+      "example": "[\"MY_TOKEN\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-skip-web-fetch-preflight",
+      "type": "setting",
+      "section": "all",
+      "key": "skipWebFetchPreflight",
+      "label": "Skip Web Fetch Preflight",
+      "description": "Skip the preflight CORS check when fetching URLs.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "skipWebFetchPreflight",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-teammate-mode",
+      "type": "setting",
+      "section": "all",
+      "key": "teammateMode",
+      "label": "Teammate Mode",
+      "description": "Enable teammate mode for collaborative sessions.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "teammateMode",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-minimum-version",
+      "type": "setting",
+      "section": "all",
+      "key": "minimumVersion",
+      "label": "Minimum Version",
+      "description": "Minimum required Claude Code version to work with this project.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "minimumVersion",
+      "inputType": "text",
+      "example": "1.0.0",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-attribution",
+      "type": "setting",
+      "section": "all",
+      "key": "attribution",
+      "label": "Attribution",
+      "description": "Configure Co-Authored-By attribution format in commits.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "attribution",
+      "inputType": "json-object",
+      "example": "{\"enabled\":true}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-plans-directory",
+      "type": "setting",
+      "section": "all",
+      "key": "plansDirectory",
+      "label": "Plans Directory",
+      "description": "Directory where Claude Code stores plan files (relative to project root).",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "plansDirectory",
+      "inputType": "text",
+      "example": ".claude/plans",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-auto-scroll-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "autoScrollEnabled",
+      "label": "Auto-Scroll Enabled",
+      "description": "Automatically scroll the terminal output as new content arrives.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "autoScrollEnabled",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-auto-updates-channel",
+      "type": "setting",
+      "section": "all",
+      "key": "autoUpdatesChannel",
+      "label": "Auto-Updates Channel",
+      "description": "Update channel for Claude Code automatic updates.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "autoUpdatesChannel",
+      "inputType": "select",
+      "options": [
+        "stable",
+        "beta"
+      ],
+      "example": "stable",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-away-summary-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "awaySummaryEnabled",
+      "label": "Away Summary Enabled",
+      "description": "Show a summary when returning to a session after being away.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "awaySummaryEnabled",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-cleanup-period-days",
+      "type": "setting",
+      "section": "all",
+      "key": "cleanupPeriodDays",
+      "label": "Cleanup Period (Days)",
+      "description": "Number of days before old session data is cleaned up.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "cleanupPeriodDays",
+      "inputType": "number",
+      "example": "30",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-default-shell",
+      "type": "setting",
+      "section": "all",
+      "key": "defaultShell",
+      "label": "Default Shell",
+      "description": "Shell to use when running Bash tool commands.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "defaultShell",
+      "inputType": "text",
+      "example": "/bin/zsh",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-disable-auto-mode",
+      "type": "setting",
+      "section": "all",
+      "key": "disableAutoMode",
+      "label": "Disable Auto Mode",
+      "description": "Disable the autonomous agent mode globally.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "disableAutoMode",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-disable-deep-link-registration",
+      "type": "setting",
+      "section": "all",
+      "key": "disableDeepLinkRegistration",
+      "label": "Disable Deep Link Registration",
+      "description": "Prevent Claude Code from registering deep link URL handlers.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "disableDeepLinkRegistration",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-editor-mode",
+      "type": "setting",
+      "section": "all",
+      "key": "editorMode",
+      "label": "Editor Mode",
+      "description": "Enable editor-mode behavior (optimized for IDE extension integration).",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "editorMode",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-effort-level",
+      "type": "setting",
+      "section": "all",
+      "key": "effortLevel",
+      "label": "Effort Level",
+      "description": "Default effort level for tasks (affects thinking depth and response length).",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "effortLevel",
+      "inputType": "select",
+      "options": [
+        "low",
+        "medium",
+        "high",
+        "max"
+      ],
+      "example": "medium",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-fast-mode-per-session-opt-in",
+      "type": "setting",
+      "section": "all",
+      "key": "fastModePerSessionOptIn",
+      "label": "Fast Mode Per-Session Opt-In",
+      "description": "Remember fast mode opt-in state across sessions.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "fastModePerSessionOptIn",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-file-suggestion",
+      "type": "setting",
+      "section": "all",
+      "key": "fileSuggestion",
+      "label": "File Suggestion",
+      "description": "Enable file path auto-completion and suggestions in the terminal.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "fileSuggestion",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-preferred-notif-channel",
+      "type": "setting",
+      "section": "all",
+      "key": "preferredNotifChannel",
+      "label": "Preferred Notification Channel",
+      "description": "Preferred channel for sending Claude Code notifications.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "preferredNotifChannel",
+      "inputType": "text",
+      "example": "terminal",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-prefers-reduced-motion",
+      "type": "setting",
+      "section": "all",
+      "key": "prefersReducedMotion",
+      "label": "Prefers Reduced Motion",
+      "description": "Reduce or disable animations in the Claude Code interface.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "prefersReducedMotion",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-show-clear-context-on-plan-accept",
+      "type": "setting",
+      "section": "all",
+      "key": "showClearContextOnPlanAccept",
+      "label": "Show Clear Context on Plan Accept",
+      "description": "Prompt to clear context when accepting a plan.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "showClearContextOnPlanAccept",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-show-thinking-summaries",
+      "type": "setting",
+      "section": "all",
+      "key": "showThinkingSummaries",
+      "label": "Show Thinking Summaries",
+      "description": "Display thinking summaries (collapsed by default) in the response.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "showThinkingSummaries",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-show-turn-duration",
+      "type": "setting",
+      "section": "all",
+      "key": "showTurnDuration",
+      "label": "Show Turn Duration",
+      "description": "Show how long each Claude turn took after completion.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "showTurnDuration",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-spinner-tips-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "spinnerTipsEnabled",
+      "label": "Spinner Tips Enabled",
+      "description": "Show helpful tips while waiting for Claude's response.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "spinnerTipsEnabled",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-spinner-tips-override",
+      "type": "setting",
+      "section": "all",
+      "key": "spinnerTipsOverride",
+      "label": "Spinner Tips Override",
+      "description": "Custom spinner tip messages to show while waiting.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "spinnerTipsOverride",
+      "inputType": "json-array",
+      "example": "[\"Working on it...\"]",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-spinner-verbs",
+      "type": "setting",
+      "section": "all",
+      "key": "spinnerVerbs",
+      "label": "Spinner Verbs",
+      "description": "Custom action verbs shown in the spinner (e.g. \"Thinking\", \"Coding\").",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "spinnerVerbs",
+      "inputType": "json-array",
+      "example": "[\"Thinking\",\"Coding\"]",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-status-line",
+      "type": "setting",
+      "section": "all",
+      "key": "statusLine",
+      "label": "Status Line",
+      "description": "Configure the status line shown in the terminal prompt.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "statusLine",
+      "inputType": "text",
+      "example": "auto",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-terminal-progress-bar-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "terminalProgressBarEnabled",
+      "label": "Terminal Progress Bar Enabled",
+      "description": "Show a progress bar in the terminal during long operations.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "terminalProgressBarEnabled",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-tui",
+      "type": "setting",
+      "section": "all",
+      "key": "tui",
+      "label": "TUI Options",
+      "description": "Terminal UI configuration options.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "tui",
+      "inputType": "json-object",
+      "example": "{}",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-view-mode",
+      "type": "setting",
+      "section": "all",
+      "key": "viewMode",
+      "label": "View Mode",
+      "description": "Color scheme for the Claude Code interface.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "viewMode",
+      "inputType": "select",
+      "options": [
+        "auto",
+        "dark",
+        "light"
+      ],
+      "example": "auto",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-voice",
+      "type": "setting",
+      "section": "all",
+      "key": "voice",
+      "label": "Voice Settings",
+      "description": "Voice input/output configuration for Claude Code.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "voice",
+      "inputType": "json-object",
+      "example": "{}",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-voice-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "voiceEnabled",
+      "label": "Voice Enabled",
+      "description": "Enable voice input and output features.",
+      "scope": [
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.local.json",
+      "valuePath": "voiceEnabled",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "local-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-auto-memory-directory",
+      "type": "setting",
+      "section": "all",
+      "key": "autoMemoryDirectory",
+      "label": "Auto Memory Directory",
+      "description": "Directory for auto-memory files (user-level path, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "autoMemoryDirectory",
+      "inputType": "text",
+      "example": "~/.claude/memory",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-auto-mode",
+      "type": "setting",
+      "section": "all",
+      "key": "autoMode",
+      "label": "Auto Mode",
+      "description": "Enable autonomous agent mode by default (user-level setting, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "autoMode",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-use-auto-mode-during-plan",
+      "type": "setting",
+      "section": "all",
+      "key": "useAutoModeDuringPlan",
+      "label": "Use Auto Mode During Plan",
+      "description": "Automatically switch to auto mode when executing a plan (user-level, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "useAutoModeDuringPlan",
+      "inputType": "boolean",
+      "example": "false",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-api-key-helper",
+      "type": "setting",
+      "section": "all",
+      "key": "apiKeyHelper",
+      "label": "API Key Helper",
+      "description": "Shell command to retrieve an API key dynamically (user-level, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "apiKeyHelper",
+      "inputType": "text",
+      "example": "echo $MY_API_KEY",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-otel-headers-helper",
+      "type": "setting",
+      "section": "all",
+      "key": "otelHeadersHelper",
+      "label": "OpenTelemetry Headers Helper",
+      "description": "Shell command to provide OpenTelemetry headers (user-level, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "otelHeadersHelper",
+      "inputType": "text",
+      "example": "echo '{\"x-api-key\":\"$OTEL_KEY\"}'",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-aws-auth-refresh",
+      "type": "setting",
+      "section": "all",
+      "key": "awsAuthRefresh",
+      "label": "AWS Auth Refresh",
+      "description": "Command to refresh AWS credentials (user-level, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "awsAuthRefresh",
+      "inputType": "text",
+      "example": "aws sso login",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-aws-credential-export",
+      "type": "setting",
+      "section": "all",
+      "key": "awsCredentialExport",
+      "label": "AWS Credential Export",
+      "description": "Command to export AWS credentials as environment variables (user-level, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "awsCredentialExport",
+      "inputType": "text",
+      "example": "aws configure export-credentials --format env",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-ssh-configs",
+      "type": "setting",
+      "section": "all",
+      "key": "sshConfigs",
+      "label": "SSH Configs",
+      "description": "SSH configuration entries for remote connections (user-level, not project-safe).",
+      "scope": [
+        "user"
+      ],
+      "writeTarget": null,
+      "valuePath": "sshConfigs",
+      "inputType": "json-array",
+      "example": "[]",
+      "status": "not-project-safe",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-allowed-channel-plugins",
+      "type": "setting",
+      "section": "all",
+      "key": "allowedChannelPlugins",
+      "label": "Allowed Channel Plugins",
+      "description": "List of channel plugin IDs approved for this organization (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "allowedChannelPlugins",
+      "inputType": "string-array",
+      "example": "[\"plugin-id\"]",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-allowed-http-hook-urls",
+      "type": "setting",
+      "section": "all",
+      "key": "allowedHttpHookUrls",
+      "label": "Allowed HTTP Hook URLs",
+      "description": "Allowlist of URL patterns for HTTP hooks.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "allowedHttpHookUrls",
+      "inputType": "json-array",
+      "example": "[\"https://hooks.example.com/*\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-allowed-mcp-servers",
+      "type": "setting",
+      "section": "all",
+      "key": "allowedMcpServers",
+      "label": "Allowed MCP Servers",
+      "description": "MCP server IDs approved by the organization (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "allowedMcpServers",
+      "inputType": "string-array",
+      "example": "[\"server-id\"]",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-allow-managed-hooks-only",
+      "type": "setting",
+      "section": "all",
+      "key": "allowManagedHooksOnly",
+      "label": "Allow Managed Hooks Only",
+      "description": "Restrict hooks to the managed allowlist only (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "allowManagedHooksOnly",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-allow-managed-mcp-servers-only",
+      "type": "setting",
+      "section": "all",
+      "key": "allowManagedMcpServersOnly",
+      "label": "Allow Managed MCP Servers Only",
+      "description": "Restrict MCP servers to the managed allowlist (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "allowManagedMcpServersOnly",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-allow-managed-permission-rules-only",
+      "type": "setting",
+      "section": "all",
+      "key": "allowManagedPermissionRulesOnly",
+      "label": "Allow Managed Permission Rules Only",
+      "description": "Restrict permission rules to the managed policy (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "allowManagedPermissionRulesOnly",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-blocked-marketplaces",
+      "type": "setting",
+      "section": "all",
+      "key": "blockedMarketplaces",
+      "label": "Blocked Marketplaces",
+      "description": "Marketplace IDs blocked by organization policy (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "blockedMarketplaces",
+      "inputType": "string-array",
+      "example": "[\"marketplace-id\"]",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-channels-enabled",
+      "type": "setting",
+      "section": "all",
+      "key": "channelsEnabled",
+      "label": "Channels Enabled",
+      "description": "Enable the Claude Code channels feature (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "channelsEnabled",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-company-announcements",
+      "type": "setting",
+      "section": "all",
+      "key": "companyAnnouncements",
+      "label": "Company Announcements",
+      "description": "Organization-wide announcements shown in Claude Code (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "companyAnnouncements",
+      "inputType": "json-object",
+      "example": "{}",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-denied-mcp-servers",
+      "type": "setting",
+      "section": "all",
+      "key": "deniedMcpServers",
+      "label": "Denied MCP Servers",
+      "description": "MCP servers blocked by organization policy (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "deniedMcpServers",
+      "inputType": "string-array",
+      "example": "[\"blocked-server\"]",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-feedback-survey-rate",
+      "type": "setting",
+      "section": "all",
+      "key": "feedbackSurveyRate",
+      "label": "Feedback Survey Rate",
+      "description": "Frequency of feedback survey prompts (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "feedbackSurveyRate",
+      "inputType": "number",
+      "example": "0",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-force-login-method",
+      "type": "setting",
+      "section": "all",
+      "key": "forceLoginMethod",
+      "label": "Force Login Method",
+      "description": "Enforce a specific login method for all users (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "forceLoginMethod",
+      "inputType": "text",
+      "example": "sso",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-force-login-org-uuid",
+      "type": "setting",
+      "section": "all",
+      "key": "forceLoginOrgUUID",
+      "label": "Force Login Org UUID",
+      "description": "Force users to log in under a specific organization UUID (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "forceLoginOrgUUID",
+      "inputType": "text",
+      "example": "org-uuid",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-force-remote-settings-refresh",
+      "type": "setting",
+      "section": "all",
+      "key": "forceRemoteSettingsRefresh",
+      "label": "Force Remote Settings Refresh",
+      "description": "Always fetch latest managed settings from the server (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "forceRemoteSettingsRefresh",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-plugin-trust-message",
+      "type": "setting",
+      "section": "all",
+      "key": "pluginTrustMessage",
+      "label": "Plugin Trust Message",
+      "description": "Custom message shown when a user installs a plugin (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "pluginTrustMessage",
+      "inputType": "text",
+      "example": "Only install approved plugins.",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-strict-known-marketplaces",
+      "type": "setting",
+      "section": "all",
+      "key": "strictKnownMarketplaces",
+      "label": "Strict Known Marketplaces",
+      "description": "Restrict plugins to known marketplaces only (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "strictKnownMarketplaces",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-wsl-inherits-windows-settings",
+      "type": "setting",
+      "section": "all",
+      "key": "wslInheritsWindowsSettings",
+      "label": "WSL Inherits Windows Settings",
+      "description": "In WSL, inherit settings from the Windows installation (managed policy only).",
+      "scope": [
+        "managed"
+      ],
+      "writeTarget": null,
+      "valuePath": "wslInheritsWindowsSettings",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "managed-only",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-agent",
+      "type": "setting",
+      "section": "all",
+      "key": "agent",
+      "label": "Agent Settings",
+      "description": "Agent behavior configuration object.",
+      "scope": [
+        "project",
+        "local",
+        "user",
+        "managed"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "agent",
+      "inputType": "json-object",
+      "example": "{}",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-worktree-symlink-directories",
+      "type": "setting",
+      "section": "all",
+      "key": "worktree",
+      "label": "Worktree: Symlink Directories",
+      "description": "Directories to symlink when creating a new worktree.",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "worktree.symlinkDirectories",
+      "inputType": "json-array",
+      "example": "[\".env\",\"node_modules\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-worktree-sparse-paths",
+      "type": "setting",
+      "section": "all",
+      "key": "worktree",
+      "label": "Worktree: Sparse Paths",
+      "description": "Paths to include in sparse checkout for new worktrees.",
+      "scope": [
+        "project",
+        "local",
+        "user"
+      ],
+      "writeTarget": ".claude/settings.json",
+      "valuePath": "worktree.sparsePaths",
+      "inputType": "json-array",
+      "example": "[\"src/\",\"package.json\"]",
+      "status": "synced",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-auto-connect-ide",
+      "type": "setting",
+      "section": "all",
+      "key": "autoConnectIde",
+      "label": "Auto-Connect IDE",
+      "description": "Automatically connect to an IDE extension when detected (global ~/.claude.json setting).",
+      "scope": [
+        "global"
+      ],
+      "writeTarget": null,
+      "valuePath": "autoConnectIde",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "global",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-auto-install-ide-extension",
+      "type": "setting",
+      "section": "all",
+      "key": "autoInstallIdeExtension",
+      "label": "Auto-Install IDE Extension",
+      "description": "Automatically install the IDE extension when Claude Code starts (global ~/.claude.json setting).",
+      "scope": [
+        "global"
+      ],
+      "writeTarget": null,
+      "valuePath": "autoInstallIdeExtension",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "global",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    },
+    {
+      "id": "setting-external-editor-context",
+      "type": "setting",
+      "section": "all",
+      "key": "externalEditorContext",
+      "label": "External Editor Context",
+      "description": "Include context from an external editor in Claude Code sessions (global ~/.claude.json setting).",
+      "scope": [
+        "global"
+      ],
+      "writeTarget": null,
+      "valuePath": "externalEditorContext",
+      "inputType": "boolean",
+      "example": "true",
+      "status": "global",
+      "docsUrl": "https://code.claude.com/docs/en/settings"
+    }
+  ]
+}

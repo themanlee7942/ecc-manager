@@ -1,0 +1,14 @@
+{
+  "name": "ecc-manager",
+  "version": "1.0.0",
+  "description": "ECC Manager — zero-dependency Claude Code settings and component manager",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/settings.test.js && node test/state.test.js && node test/state-shards.test.js && node test/lm-cache.test.js && node test/file-utils.test.js && node test/catalog-scan.test.js && node test/components.test.js && node test/http-utils.test.js && node test/claudemd-default.test.js && node test/managed-docs.test.js && node test/shared-library.test.js && node test/integration-lm-cache.test.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "MIT"
+}
